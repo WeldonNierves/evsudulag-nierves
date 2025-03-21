@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '../model/UserModel';
 import { UserData } from '../mock/UserData';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  private currentUser: UserModel | null = null;
-
-  validateLogin(username: string, password: string) : boolean {
-    const user = UserData.find(u => u.username === username && u.password === password);
-
-    if (user) {
-      this.currentUser = user;
-      return true;
-    }
-    return false;
+  public userLogin(user: any): Observable<any> {
+    return this.http.post('http://localhost:8000/login', user)
   }
+
+  // constructor() { }
+
+  // private currentUser: UserModel | null = null;
+
+  // validateLogin(username: string, password: string) : boolean {
+  //   const user = UserData.find(u => u.username === username && u.password === password);
+
+  //   if (user) {
+  //     this.currentUser = user;
+  //     return true;
+  //   }
+  //   return false;
+  // }
   
-  getCurentUser() : UserModel | null {
-    return this.currentUser;
-  }
+  // getCurentUser() : UserModel | null {
+  //   return this.currentUser;
+  // }
 }

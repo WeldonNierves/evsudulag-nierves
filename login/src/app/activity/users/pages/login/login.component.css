@@ -13,3 +13,8 @@
     text-align: center;
     margin-bottom: 16px;
   }
+  .msg {
+    padding: 4px;
+    color: red;
+    text-align: center;
+  }

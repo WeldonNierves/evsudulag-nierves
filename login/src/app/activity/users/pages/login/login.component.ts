@@ -27,15 +27,33 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  onSubmit() {
-    
-    const { username, password } = this.loginForm.value;
+  msg: string = '';
 
-    if(this.userService.validateLogin(username, password)){
-      this.router.navigate(['/activity/detail'])
-    } else {
-      console.log('error')
-    }
+  onSubmit() {
+
+    this.userService.userLogin(this.loginForm.value).subscribe({
+      next: (data) => {
+        if (data?.user) {
+          this.router.navigate(['/activity/dashboard']);
+          this.msg = '';
+        }
+      },
+      error: (err) => {
+        if (err.status === 401) {
+          this.msg = 'Invalid username or password.';
+        } else {
+          this.msg = 'Something went wrong. Please try again.';
+        }
+      }
+    });
+    
+    // const { username, password } = this.loginForm.value;
+
+    // if(this.userService.validateLogin(username, password)){
+    //   this.router.navigate(['/activity/detail'])
+    // } else {
+    //   console.log('error')
+    // }
   }
 
 }

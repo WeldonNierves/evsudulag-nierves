@@ -1,0 +1,35 @@
+.dashboard-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .stats-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .stat-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+  }
+  
+  .stat-card mat-icon {
+    font-size: 40px;
+    color: #007bff;
+    height: 40px;
+    width: 40px;
+  }
+  
+  .stat-card h2 {
+    margin: 10px 0;
+  }
+  
+  .stat-card p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
